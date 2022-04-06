@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties"/>
+    <settings>
+        <!--开启二级缓存 cacheEnabled默认是false-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <!--别名不区分大小写-->
+    <typeAliases>
+        <!--配置单个别名-->
+        <typeAlias alias="customer" type="com.wjw.po.Customer"></typeAlias>
+        <!--配置扫描包形式 , 别名就是类名首字母小写-->
+        <!--        <package name="com.wjw.po"/>-->
+    </typeAliases>
+    <!--1.配置环境 ，默认的环境id为mysql-->
+    <environments default="mysql">
+        <!--1.2.配置id为mysql的数据库环境 -->
+        <environment id="mysql">
+            <!-- 使用JDBC的事务管理 -->
+            <transactionManager type="JDBC"/>
+            <!--数据库连接池 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.usename}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--2.配置Mapper的位置 -->
+    <mappers>
+        <mapper resource="com/wjw/mapper/CustomerMapper.xml"/>
+    </mappers>
+</configuration>
