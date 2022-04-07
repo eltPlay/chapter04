@@ -1,7 +1,5 @@
 package com.wjw.test;
-/*
-  入门程序测试类
- */
+/* 入门程序测试类 */
 
 import com.wjw.po.Customer;
 import com.wjw.utils.MybatisUtils;
