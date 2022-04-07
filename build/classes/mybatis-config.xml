@@ -33,5 +33,6 @@
     <!--2.ÅäÖÃMapperµÄÎ»ÖÃ -->
     <mappers>
         <mapper resource="com/wjw/mapper/CustomerMapper.xml"/>
+        <mapper resource="com/wjw/mapper/UserMapper.xml"/>
     </mappers>
 </configuration>

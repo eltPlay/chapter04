@@ -2,6 +2,7 @@ package com.wjw.test;
 /* 入门程序测试类 */
 
 import com.wjw.po.Customer;
+import com.wjw.po.User;
 import com.wjw.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
@@ -169,6 +170,22 @@ public class MybatisTest {
 		// 4.3提交事务
 		sqlSession.commit();
 		// 5、关闭SqlSession
+		sqlSession.close();
+	}
+
+	/**
+	 * 测试ResultMap
+	 */
+	@Test
+	public void findAllUsersTest() throws Exception {
+		//通过工具类获取Sqlsession
+		SqlSession sqlSession = MybatisUtils.getSession();
+		//SqlSession执行映射文件中的SQL，并返回映射结果集
+		List<User> list = sqlSession.selectList("com.wjw.mapper.UserMapper.findAllUser");
+		for (User user : list) {
+			System.out.println(user);
+		}
+		//关闭sqlSession
 		sqlSession.close();
 	}
 

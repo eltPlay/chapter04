@@ -4,13 +4,14 @@
 <!-- namespace表示命名空间 -->
 <mapper namespace="com.wjw.mapper.CustomerMapper">
 
-	<sql id="customerColumns">id,usename,jobs,phone</sql>
+	<sql id="customerColumns">id,username,jobs,phone</sql>
 
 	<!--开启缓存功能-->
 	<cache/>
 	<!--根据客户编号获取客户信息 -->
 	<select id="findCustomerById" parameterType="Integer" resultType="customer">
-		select *
+		select
+		<include refid="customerColumns"/>
 		from t_customer
 		where id = #{id}
 	</select>
@@ -18,7 +19,9 @@
 	<!--根据客户名模糊查询客户信息列表-->
 	<select id="findCustomerByName" parameterType="String" resultType="customer">
 		<!-- select * from t_customer where username like '%${value}%' -->
-		select * from t_customer where username like concat('%',#{value},'%')
+		select
+		<include refid="customerColumns"/>
+		from t_customer where username like concat('%',#{value},'%')
 	</select>
 
 	<!-- 添加客户信息 -->
