@@ -107,6 +107,8 @@ public class MybatisTest {
 		customer.setPhone("1392912");
 		// 4.2执行SqlSession的插入方法，返回的是SQL语句影响的行数
 		int rows = sqlSession.insert("com.wjw.mapper.CustomerMapper.addCustomer", customer);
+		//输出插入数据的主键ID值
+		System.out.println(customer.getId());
 		// 4.3通过返回结果判断插入操作是否执行成功
 		if (rows > 0) {
 			System.out.println("您成功插入了" + rows + "条数据！");
