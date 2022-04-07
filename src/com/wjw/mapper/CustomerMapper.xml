@@ -3,6 +3,9 @@
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace表示命名空间 -->
 <mapper namespace="com.wjw.mapper.CustomerMapper">
+
+	<sql id="customerColumns">id,usename,jobs,phone</sql>
+
 	<!--开启缓存功能-->
 	<cache/>
 	<!--根据客户编号获取客户信息 -->
@@ -19,9 +22,9 @@
 	</select>
 
 	<!-- 添加客户信息 -->
-	<insert id="addCustomer" parameterType="customer">
-		insert into t_customer(id, username, jobs, phone)
-		values (#{id}, #{username}, #{jobs}, #{phone})
+	<insert id="addCustomer" parameterType="customer" keyProperty="id" useGeneratedKeys="true">
+		insert into t_customer(username, jobs, phone)
+		values (#{username}, #{jobs}, #{phone})
 	</insert>
 
 	<!-- 更新客户信息 -->

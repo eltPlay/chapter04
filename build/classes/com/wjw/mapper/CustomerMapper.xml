@@ -19,9 +19,9 @@
 	</select>
 
 	<!-- 添加客户信息 -->
-	<insert id="addCustomer" parameterType="customer">
-		insert into t_customer(id, username, jobs, phone)
-		values (#{id}, #{username}, #{jobs}, #{phone})
+	<insert id="addCustomer" parameterType="customer" keyProperty="id" useGeneratedKeys="true">
+		insert into t_customer( username, jobs, phone)
+		values ( #{username}, #{jobs}, #{phone})
 	</insert>
 
 	<!-- 更新客户信息 -->

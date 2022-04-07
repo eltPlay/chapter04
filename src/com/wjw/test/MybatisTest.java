@@ -101,7 +101,6 @@ public class MybatisTest {
 		// 4、SqlSession执行添加操作
 		// 4.1创建Customer对象，并向对象中添加数据
 		Customer customer = new Customer();
-		customer.setId(5);
 		customer.setUsername("Rose");
 		customer.setJobs("TEACHER");
 		customer.setPhone("1392912");
